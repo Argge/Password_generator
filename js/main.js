@@ -49,19 +49,22 @@ generateBtn.addEventListener("click", () => {
         result1.innerHTML = "ERROR! THE LENGTH OF PASSWORD HASN'T CHOSEN"
     } else {
         let content = document.getElementById("content");
+
         // CREATING THE RESULT WINDOW
         let res = document.createElement("div");
         res.id = "resultWin";
         res.className = "resultWin";
         content.appendChild(res);
+
         // CREATING TEXT IN WINDOW
         let resText1 = document.createElement("p");
         resText1.textContent = "Your password:";
         res.appendChild(resText1);
+
         // CREATING RESULT TEXT IN WINDOW
         let resText2 = document.createElement("p");
-        resText2.textContent = resultPwd.toString();
-        res.appendChild(resText1);
+        resText2.textContent = resultPwd;
+        res.appendChild(resText2);
     }
 });
 
@@ -96,4 +99,5 @@ function ascii(num) {
     }
     console.log(password);
     console.log(text);
+    return text;
 }
