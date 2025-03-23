@@ -30,12 +30,17 @@ buttons.map((button) => {
 
 // BUTTON TO TURN ON OWN LENTGH OF PASSWORD
 ownBtn.addEventListener("click", () => {
-    if (lengthBtns.style.display === "flex"){
+    let content = document.getElementById("content");
+    let title = document.getElementById("title");
+    if (lengthBtns.style.display === "flex") {
         lengthBtns.style.display = "none";
-        lengthOwn.style.display = "flex";
+        let lengthOwn = document.createElement("input");
+        lengthOwn.type = "text";
+        lengthOwn.id = "pwdInput";
+        lengthOwn.className = "pwdInput";
+        content.insertBefore(lengthOwn, title.nextSibling);
     } else {
         lengthBtns.style.display = "flex";
-        lengthOwn.style.display = "none"; 
     }
 });
 
@@ -43,7 +48,7 @@ ownBtn.addEventListener("click", () => {
 // BUTTON TO GENERADE PASSWORD
 generateBtn.addEventListener("click", () => {
     let resultPwd = ascii(len);
-    if (lengthOwn.style.display === "flex") {
+    if (lengthBtns.style.display === "none") {
         len = lengthOwn.value;
     } else if (len === null) {
         result1.innerHTML = "ERROR! THE LENGTH OF PASSWORD HASN'T CHOSEN"
