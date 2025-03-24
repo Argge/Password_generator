@@ -42,15 +42,15 @@ ownBtn.addEventListener("click", () => {
         lengthOwn.className = "pwdInput";
         content.insertBefore(lengthOwn, title.nextSibling);
         lengthOwnChecker = true;
-    } 
-    if (lengthOwnChecker === true) {
         lengthBtns.style.display = "none";
+    } else {
+        let lengthOwn = document.getElementById("pwdInput");
+        if (lengthOwn) {
+            lengthOwn.parentNode.removeChild(lengthOwn);
+        }
+        lengthBtns.style.display = "flex";
+        lengthOwnChecker = false;
     }
-    // if (lengthOwnChecker === true) {
-    //     lengthBtns.style.display = "flex";
-    //     lengthOwn.parentNode.removeChild(lengthOwn);
-    //     lengthOwnChecker = false;
-    // }
 });
 
 
