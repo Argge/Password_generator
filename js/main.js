@@ -11,6 +11,11 @@ let lengthOwn = document.getElementById("pwdInput");
 let len = null;
 let pwd = null;
 
+let Btn1 = document.createElement("button");
+Btn1.id = "1Btn";
+Btn1.className = "lenBtn";
+lengthBtns.appendChild(Btn1);
+
 // BUTTONS 12, 18, 24
 buttons.map((button) => {
     button.addEventListener("click", (e) => {
@@ -39,6 +44,7 @@ ownBtn.addEventListener("click", () => {
         lengthOwn.id = "pwdInput";
         lengthOwn.className = "pwdInput";
         content.insertBefore(lengthOwn, title.nextSibling);
+        
     } else {
         lengthBtns.style.display = "flex";
     }
