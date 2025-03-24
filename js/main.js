@@ -6,15 +6,9 @@ let lengthBtns = document.getElementById("buttons");
 
 let ownBtn = document.getElementById("ownBtn");
 let generateBtn = document.getElementById("generateBtn");
-let lengthOwn = document.getElementById("pwdInput");
 
 let len = null;
 let pwd = null;
-
-let Btn1 = document.createElement("button");
-Btn1.id = "1Btn";
-Btn1.className = "lenBtn";
-lengthBtns.appendChild(Btn1);
 
 // BUTTONS 12, 18, 24
 buttons.map((button) => {
@@ -33,20 +27,26 @@ buttons.map((button) => {
     });
 });
 
+
+
 // BUTTON TO TURN ON OWN LENTGH OF PASSWORD
+let lengthOwnChecker = false;
 ownBtn.addEventListener("click", () => {
     let content = document.getElementById("content");
     let title = document.getElementById("title");
-    if (lengthBtns.style.display === "flex") {
-        lengthBtns.style.display = "none";
+
+    if (lengthOwnChecker === false) {
         let lengthOwn = document.createElement("input");
         lengthOwn.type = "text";
         lengthOwn.id = "pwdInput";
         lengthOwn.className = "pwdInput";
         content.insertBefore(lengthOwn, title.nextSibling);
-        
+        lengthBtns.style.display = "none";
+        lengthOwnChecker = true;
     } else {
         lengthBtns.style.display = "flex";
+        lengthOwn.remove();
+        lengthOwnChecker = false;
     }
 });
 
@@ -54,7 +54,7 @@ ownBtn.addEventListener("click", () => {
 // BUTTON TO GENERADE PASSWORD
 generateBtn.addEventListener("click", () => {
     let resultPwd = ascii(len);
-    if (lengthBtns.style.display === "none") {
+    if (lengthOwnChecker === true) {
         len = lengthOwn.value;
     } else if (len === null) {
         result1.innerHTML = "ERROR! THE LENGTH OF PASSWORD HASN'T CHOSEN"
