@@ -41,41 +41,44 @@ ownBtn.addEventListener("click", () => {
         lengthOwn.id = "pwdInput";
         lengthOwn.className = "pwdInput";
         content.insertBefore(lengthOwn, title.nextSibling);
-        lengthBtns.style.display = "none";
         lengthOwnChecker = true;
-    } else {
-        lengthBtns.style.display = "flex";
-        lengthOwn.remove();
-        lengthOwnChecker = false;
+    } 
+    if (lengthOwnChecker === true) {
+        lengthBtns.style.display = "none";
     }
+    // if (lengthOwnChecker === true) {
+    //     lengthBtns.style.display = "flex";
+    //     lengthOwn.parentNode.removeChild(lengthOwn);
+    //     lengthOwnChecker = false;
+    // }
 });
 
 
 // BUTTON TO GENERADE PASSWORD
+let resultPwd;
 generateBtn.addEventListener("click", () => {
-    let resultPwd = ascii(len);
     if (lengthOwnChecker === true) {
+        let lengthOwn = document.getElementById("pwdInput");
         len = lengthOwn.value;
+        resultPwd = ascii(len);
+        creating();
     } else if (len === null) {
-        result1.innerHTML = "ERROR! THE LENGTH OF PASSWORD HASN'T CHOSEN"
-    } else {
         let content = document.getElementById("content");
 
         // CREATING THE RESULT WINDOW
         let res = document.createElement("div");
         res.id = "resultWin";
         res.className = "resultWin";
-        content.appendChild(res);
-
-        // CREATING TEXT IN WINDOW
-        let resText1 = document.createElement("p");
-        resText1.textContent = "Your password:";
-        res.appendChild(resText1);
+        content.appendChild(res)
 
         // CREATING RESULT TEXT IN WINDOW
         let resText2 = document.createElement("p");
-        resText2.textContent = resultPwd;
+        resText2.id = "resText2";
+        resText2.textContent = "ERROR! THE LENGTH OF PASSWORD HASN'T CHOSEN";
         res.appendChild(resText2);
+    } else {
+        resultPwd = ascii(len);
+        creating();
     }
 });
 
@@ -111,4 +114,25 @@ function ascii(num) {
     console.log(password);
     console.log(text);
     return text;
+}
+
+function creating() {
+    let content = document.getElementById("content");
+
+    // CREATING THE RESULT WINDOW
+    let res = document.createElement("div");
+    res.id = "resultWin";
+    res.className = "resultWin";
+    content.appendChild(res);
+
+    // CREATING TEXT IN WINDOW
+    let resText1 = document.createElement("p");
+    resText1.textContent = "Your password:";
+    res.appendChild(resText1);
+
+    // CREATING RESULT TEXT IN WINDOW
+    let resText2 = document.createElement("p");
+    resText2.id = "resText2";
+    resText2.textContent = resultPwd;
+    res.appendChild(resText2);
 }

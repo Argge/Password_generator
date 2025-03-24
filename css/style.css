@@ -16,6 +16,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 
@@ -123,9 +125,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+    position: fixed;
     font-size: 20px;
     transform: translateY(155px);
+    overflow-y: auto;
+    color: #fff;
+}
+
+#resText2 {
+    text-align: center;
+    max-width: 280px;
 }
 
 /* RESULT WINDOW */
